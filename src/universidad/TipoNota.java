@@ -1,0 +1,11 @@
+package universidad;
+
+public enum TipoNota {
+	
+	PRIMER_PARCIAL,
+	SEGUNDO_PARCIAL,
+	RECUPERATORIO1PARCIAL,
+	RECUPERATORIO2PARCIAL,
+	FINAL;
+
+}
