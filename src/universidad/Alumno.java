@@ -93,6 +93,16 @@ public class Alumno {
 			
 		}
 
+	public Boolean agregarComisionInscripto(Comision comision) {
+		for (Comision com : comisionesInscritas) {
+			if(com.getDia().equals(comision.getDia())&&(com.getTurno().equals(comision.getTurno()))) {
+				return false;
+			}
+		}
+		return this.comisionesInscritas.add(comision);
+		
+	}
+
 
 		
 	}

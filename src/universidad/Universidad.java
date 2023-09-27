@@ -2,8 +2,6 @@ package universidad;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-
 
 public class Universidad {
 	
@@ -179,16 +177,16 @@ public class Universidad {
 
 	private boolean sePuedeRegistrarProfesor(Comision curso) { //DEPENDE DE LA CANTIDAD DE ALUMNOS EN EL CURSO.
 
-		if(curso.cantidadAlumnosEnLaComision()<=1&&curso.cantidadProfesoresEnLaComision()==0) {
+		if(curso.cantidadAlumnosEnLaComision()<=20&&curso.cantidadProfesoresEnLaComision()==0) {
 			return true;
 		}
 		
-		if(curso.cantidadAlumnosEnLaComision()>=2&&curso.cantidadAlumnosEnLaComision()<=3 &&
+		if(curso.cantidadAlumnosEnLaComision()>21&&curso.cantidadAlumnosEnLaComision()<40 &&
 				curso.cantidadProfesoresEnLaComision()<=1) {
 			return true;
 		}
 
-		if(curso.cantidadAlumnosEnLaComision()>=4&&curso.cantidadAlumnosEnLaComision()<=60 && 	
+		if(curso.cantidadAlumnosEnLaComision()>41&&curso.cantidadAlumnosEnLaComision()<=60 && 	
 				curso.cantidadProfesoresEnLaComision()<=2) {
 			return true;
 		}
@@ -223,10 +221,11 @@ public class Universidad {
 		
 		if(al!=null && comision2 !=null) {
 			if(comision2.getAula().getCapacidad()>comision2.getAlumnos().size()) {
-				comision2.agregarAlumnoALaComision(alumno);
+				if(comision2.agregarAlumnoALaComision(alumno,comision)==true) {
 			return true;
 				
 		}
+				}
 			}
 		}
 		}
@@ -412,7 +411,7 @@ public class Universidad {
 	
 	public Alumno buscarAlumnoEnComision (Alumno alumno, Comision comision) {
 		for (Comision comi : comisiones) {
-			if(comi.getAlumnos().contains(alumno)) {
+			if(comi.getNumeroComision().equals(comision.getNumeroComision())&&(comi.getAlumnos().contains(alumno))) {
 				return alumno;
 			}
 		}

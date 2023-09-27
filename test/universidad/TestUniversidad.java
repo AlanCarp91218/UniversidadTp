@@ -156,6 +156,7 @@ public class TestUniversidad {
     	Universidad unlam = new Universidad (nombre);
     	
     	Integer numeroComision= 1;
+     	Dia dia= Dia.LUNES;
     	Turno turno= Turno.MAÑANA;
         Aula aula = new Aula (300,30);
         Materia pb2 = new Materia (1,"PB2");
@@ -168,7 +169,7 @@ public class TestUniversidad {
     
         unlam.registraMateria(pb2);
      	
-        Comision comision = new Comision (numeroComision, turno, pb2, cl, aula);
+        Comision comision = new Comision (numeroComision, turno, dia, pb2, cl, aula);
         
    
     	assertTrue (unlam.crearNuevaComision(comision));
@@ -181,7 +182,8 @@ public class TestUniversidad {
     	Universidad unlam = new Universidad (nombre);
     	
     	Integer numeroComision= 1;
-    	Turno turno= Turno.MAÑANA;
+    	Turno turno= Turno.MAÑANA;     	
+    	Dia dia= Dia.MARTES;
     	Integer idCiclo=1;
     	LocalDate fechaInicioCiclo= LocalDate.of(2023, 8, 20);
     	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
@@ -194,14 +196,14 @@ public class TestUniversidad {
 
         unlam.registraMateria(pb2);
      	
-        Comision comision = new Comision (numeroComision, turno, pb2, cl, aula);
+        Comision comision = new Comision (numeroComision, turno, dia, pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
     	
     	Materia pb1 = new Materia (3,"PB1");
     	unlam.registraMateria(pb1);
     	
-        Comision comision2 = new Comision (1, turno, pb1, cl, aula);
+        Comision comision2 = new Comision (1, turno, dia, pb1, cl, aula);
         
         assertFalse(unlam.crearNuevaComision(comision2));
     	       
@@ -214,6 +216,7 @@ public class TestUniversidad {
     	
     	Integer numeroComision= 1;
     	Turno turno= Turno.MAÑANA;
+     	Dia dia= Dia.LUNES;
     	Integer idCiclo=1;
     	LocalDate fechaInicioCiclo= LocalDate.of(2023, 8, 20);
     	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
@@ -226,14 +229,14 @@ public class TestUniversidad {
 
         unlam.registraMateria(pb2);
      	
-        Comision comision = new Comision (numeroComision, turno, pb2, cl, aula);
+        Comision comision = new Comision (numeroComision, turno, dia, pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
     	
     	Materia pb1 = new Materia (3,"PB1");
     	unlam.registraMateria(pb1);
     	
-        Comision comision2 = new Comision (2, turno, pb2, cl, aula);
+        Comision comision2 = new Comision (2, turno, dia,pb2, cl, aula);
         
         assertFalse(unlam.crearNuevaComision(comision2));
     	       
@@ -288,7 +291,7 @@ public class TestUniversidad {
         Aula aula = new Aula (300,30);
         Materia pb2 = new Materia (1,"PB2");
         Turno turno= Turno.MAÑANA;
-        
+     	Dia dia= Dia.LUNES;
         Integer idCiclo=1;
     	LocalDate fechaInicioCiclo= LocalDate.of(2023, 8, 20);
     	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
@@ -298,7 +301,7 @@ public class TestUniversidad {
     	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
         unlam.registraMateria(pb2);
      	
-        Comision comision = new Comision (codigoComision, turno , pb2, cl, aula);
+        Comision comision = new Comision (codigoComision, turno ,  dia, pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
 	
@@ -327,7 +330,7 @@ public class TestUniversidad {
         Aula aula = new Aula (300,30);
         Materia pb2 = new Materia (1,"PB2");
         Turno turno= Turno.MAÑANA;
-        
+     	Dia dia= Dia.LUNES;
         Integer idCiclo=1;
     	LocalDate fechaInicioCiclo= LocalDate.of(2023, 8, 20);
     	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
@@ -337,7 +340,7 @@ public class TestUniversidad {
     	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
         unlam.registraMateria(pb2);
      	
-        Comision comision = new Comision (codigoComision, turno , pb2, cl, aula);
+        Comision comision = new Comision (codigoComision, turno , dia, pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
 	
@@ -361,7 +364,7 @@ public class TestUniversidad {
     	    	
     	unlam.asignarProfesor(prof, comision);
     	
-    	Boolean exitoso= unlam.asignarProfesor(prof,comision); //ASIGNA ESE PROFESOR AL CURSO
+    	Boolean exitoso= unlam.asignarProfesor(prof,comision); //ASIGNA ESE PROFESOR A LA COMISION
     	
     	assertFalse(exitoso);
     	       
@@ -372,7 +375,6 @@ public class TestUniversidad {
 		
 		String  nombre = "Unlam";
     	Universidad unlam = new Universidad (nombre);
-    	
     	Integer codigoCurso= 1;
     	 Integer idCiclo=1;
      	LocalDate fechaInicioCiclo= LocalDate.of(2023, 8, 20);
@@ -380,11 +382,12 @@ public class TestUniversidad {
      	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
      	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
      	Turno turno= Turno.MAÑANA;     	
+     	Dia dia= Dia.LUNES;
      	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
         Aula aula = new Aula (300,65);
         Materia pb2 = new Materia (1,"PB2");
      	
-        Comision comision = new Comision (codigoCurso, turno, pb2, cl, aula);
+        Comision comision = new Comision (codigoCurso, turno, dia, pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
 	
@@ -404,6 +407,50 @@ public class TestUniversidad {
 	}
 	
 	@Test
+	public void queNoSePuedaInscribirUnAlumnoADosComisionesDelMismoTurnoYDia() { 
+															//DOS COMISIONES REPITEN TURNO Y HORARIO, FALSE.
+		String  nombre = "Unlam";
+    	Universidad unlam = new Universidad (nombre);
+    
+    	Integer codigoCurso= 1;
+    	Integer idCiclo=1;
+     	LocalDate fechaInicioCiclo= LocalDate.of(2023, 8, 20);
+     	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
+     	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
+     	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
+     	
+     	Turno turno= Turno.MAÑANA;
+     	Dia dia= Dia.JUEVES;
+     	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
+        Aula aula = new Aula (300,65);
+        Materia pb2 = new Materia (1,"PB2");
+        Materia pb1 = new Materia (2,"PB1");
+     	
+        Comision comision = new Comision (codigoCurso, turno, dia, pb2, cl, aula);
+
+    	unlam.crearNuevaComision(comision);
+    	
+    	Comision comision2 = new Comision (2, turno, dia, pb1, cl, aula);
+
+    	unlam.crearNuevaComision(comision2);
+	
+    	Integer id= 1;
+    	String nombre2 = "Juan";
+    	String apellido= "Perez";
+    	
+    	Alumno alumno = new Alumno (id,nombre2,apellido);
+    	LocalDate fechaInscripcion = LocalDate.of(2023, 8, 10);
+    	
+    	unlam.registrarAlumno(alumno);
+    	
+    	unlam.asignarAlumnoALaComision(alumno,comision,fechaInscripcion);
+    	Boolean exitoso= unlam.asignarAlumnoALaComision(alumno,comision2,fechaInscripcion);
+    	
+    	assertFalse(exitoso);
+    	       
+	}
+	
+	@Test
 	public void queNoSePuedaInscribirAUnAlumnoSiEstaFueraDeFechaDeInscripcion() {
 		
 		String  nombre = "Unlam";
@@ -415,16 +462,17 @@ public class TestUniversidad {
      	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
      	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
      	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
-     	Turno turno= Turno.MAÑANA;     	
+     	Turno turno= Turno.MAÑANA;    
+     	Dia dia= Dia.LUNES;
      	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
         Aula aula = new Aula (300,65);
         Materia pb2 = new Materia (1,"PB2");
      	
-        Comision comision = new Comision (codigoCurso, turno, pb2, cl, aula);
+        Comision comision = new Comision (codigoCurso, turno, dia,pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
     	
-    	Comision comision2 = new Comision (codigoCurso, turno, pb2, cl, aula);
+    	Comision comision2 = new Comision (codigoCurso, turno, dia, pb2, cl, aula);
 
      	unlam.crearNuevaComision(comision2);
 	
@@ -446,8 +494,8 @@ public class TestUniversidad {
 	}
 	
 	@Test
-	public void queNoSePuedaInscribirUnAlumnoSiExcedeLaCapacidadMaximaEnElAula() { //TODOS DATOS CORRECTOS
-		
+	public void queNoSePuedaInscribirUnAlumnoSiExcedeLaCapacidadMaximaEnElAula() { 
+				// DOS ALUMNOS PARA LA CAPACIDAD DEL AULA QUE EN ESTE CASO ES 1.
 		String  nombre = "Unlam";
     	Universidad unlam = new Universidad (nombre);
     	
@@ -458,11 +506,12 @@ public class TestUniversidad {
      	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
      	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
      	Turno turno= Turno.MAÑANA;     	
+     	Dia dia= Dia.LUNES;
      	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
         Aula aula = new Aula (300,1);
         Materia pb2 = new Materia (1,"PB2");
      	
-        Comision comision = new Comision (codigoCurso, turno, pb2, cl, aula);
+        Comision comision = new Comision (codigoCurso, turno, dia, pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
 	
@@ -549,11 +598,12 @@ public class TestUniversidad {
      	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
      	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
      	Turno turno= Turno.MAÑANA;     	
+     	Dia dia= Dia.LUNES;
      	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
         Aula aula = new Aula (300,65);
         Materia pb2 = new Materia (1,"PB2");
      	
-        Comision comision = new Comision (codigoComision, turno, pb2, cl, aula);
+        Comision comision = new Comision (codigoComision, turno, dia,pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
 	
@@ -576,7 +626,7 @@ public class TestUniversidad {
 	}
 	
 	@Test
-	public void queNoSePuedaRegistrarDosNotasDelMismoTipo() {
+	public void queNoSePuedaRegistrarDosNotasDelMismoTipo() {  //REGISTRO DOS VECES EL PRIMER PARCIAL//
 		
 		String  nombre = "Unlam";
     	Universidad unlam = new Universidad (nombre);
@@ -587,12 +637,13 @@ public class TestUniversidad {
      	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
      	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
      	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
-     	Turno turno= Turno.MAÑANA;     	
+     	Turno turno= Turno.MAÑANA;
+     	Dia dia= Dia.VIERNES;
      	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
         Aula aula = new Aula (300,65);
         Materia pb2 = new Materia (1,"PB2");
      	
-        Comision comision = new Comision (codigoComision, turno, pb2, cl, aula);
+        Comision comision = new Comision (codigoComision, turno, dia, pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
 	
@@ -626,12 +677,13 @@ public class TestUniversidad {
      	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
      	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
      	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
-     	Turno turno= Turno.MAÑANA;     	
+     	Turno turno= Turno.MAÑANA;
+     	Dia dia= Dia.LUNES;
      	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
         Aula aula = new Aula (300,65);
         Materia pb2 = new Materia (1,"PB2");
      	
-        Comision comision = new Comision (codigoComision, turno, pb2, cl, aula);
+        Comision comision = new Comision (codigoComision, turno, dia,pb2, cl, aula);
 
     	unlam.crearNuevaComision(comision);
 	
@@ -669,12 +721,13 @@ public class TestUniversidad {
          	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
          	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
          	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
-         	Turno turno= Turno.MAÑANA;     	
+         	Turno turno= Turno.MAÑANA;
+         	Dia dia= Dia.LUNES;
          	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
             Aula aula = new Aula (300,65);
             Materia pb2 = new Materia (1,"PB2");
          	
-            Comision comision = new Comision (codigoComision, turno, pb2, cl, aula);
+            Comision comision = new Comision (codigoComision, turno, dia, pb2, cl, aula);
 
         	unlam.crearNuevaComision(comision);
     	
@@ -686,7 +739,7 @@ public class TestUniversidad {
         	
         	unlam.registrarAlumno(alumno);
         	
-        	Nota primerNota = new Nota (TipoNota.PRIMER_PARCIAL,91218); //REGISTRO DE NOTA FUERA DE RANGO
+        	Nota primerNota = new Nota (TipoNota.PRIMER_PARCIAL,91218); //REGISTRO UNA NOTA ERRONEA.
         	
         	Boolean exitoso= unlam.registrarNota(alumno,comision,primerNota);
         	
@@ -705,12 +758,13 @@ public class TestUniversidad {
          	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
          	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
          	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
-         	Turno turno= Turno.MAÑANA;     	
+         	Turno turno= Turno.MAÑANA;
+         	Dia dia= Dia.MIERCOLES;
          	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
             Aula aula = new Aula (300,65);
             Materia pb2 = new Materia (1,"PB2");
          	
-            Comision comision = new Comision (codigoCurso, turno, pb2, cl, aula);
+            Comision comision = new Comision (codigoCurso, turno, dia, pb2, cl, aula);
 
         	unlam.crearNuevaComision(comision);
     	
@@ -735,8 +789,8 @@ public class TestUniversidad {
     	}
     	
     	@Test
-    	public void queSePuedaoObtenerLasNotasDeUnAlumnoEnUnaComision() { //TODOS DATOS CORRECTOS
-    															//FUNCION MATH.ROUND IMPLEMENTADA PARA REDONDEAR PROMEDIO HACIA ARRIBA
+    	public void queSePuedaoObtenerLasNotasDeUnAlumnoEnUnaComision() { 
+    															 
     		String  nombre = "Unlam";
         	Universidad unlam = new Universidad (nombre);
         	
@@ -746,12 +800,13 @@ public class TestUniversidad {
          	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
          	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
          	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
-         	Turno turno= Turno.MAÑANA;     	
+         	Turno turno= Turno.MAÑANA;    
+         	Dia dia= Dia.VIERNES;
          	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
             Aula aula = new Aula (300,65);
             Materia pb2 = new Materia (1,"PB2");
          	
-            Comision comision = new Comision (codigoCurso, turno, pb2, cl, aula);
+            Comision comision = new Comision (codigoCurso, turno, dia, pb2, cl, aula);
 
         	unlam.crearNuevaComision(comision); //REGISTRO COMISION
     	
@@ -789,12 +844,13 @@ public class TestUniversidad {
          	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
          	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
          	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
-         	Turno turno= Turno.MAÑANA;     	
+         	Turno turno= Turno.MAÑANA;
+         	Dia dia= Dia.LUNES;
          	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
             Aula aula = new Aula (300,65);
             Materia pb2 = new Materia (1,"PB2");
          	
-            Comision comision = new Comision (codigoCurso, turno, pb2, cl, aula);
+            Comision comision = new Comision (codigoCurso, turno, dia, pb2, cl, aula);
 
         	unlam.crearNuevaComision(comision); //REGISTRO COMISION
     	
@@ -816,7 +872,7 @@ public class TestUniversidad {
         	
         	//------------------------//
             Materia pb1 = new Materia (5,"PB1");
-        	Comision comision2 = new Comision (2, turno, pb1, cl, aula);
+        	Comision comision2 = new Comision (2, turno, dia,pb1, cl, aula);
 
          	unlam.crearNuevaComision(comision2); //REGISTRO COMISION
          	
@@ -853,7 +909,8 @@ public class TestUniversidad {
          	LocalDate fechaFinCiclo= LocalDate.of(2023, 11, 20);
          	LocalDate fechaInicioInscripcion= LocalDate.of(2023, 8, 7);
          	LocalDate fechaFinInscripcion= LocalDate.of(2023, 8, 14);
-         	Turno turno= Turno.MAÑANA;     	
+         	Turno turno= Turno.MAÑANA;
+         	Dia dia= Dia.LUNES;
          	CicloLectivo cl = new CicloLectivo(idCiclo,fechaInicioCiclo,fechaFinCiclo,fechaInicioInscripcion,fechaFinInscripcion);
             Aula aula = new Aula (300,65);
             Materia pb2 = new Materia (1,"PB2");
@@ -861,11 +918,11 @@ public class TestUniversidad {
             Materia pb1 = new Materia (2,"PB1");
             Materia base = new Materia (3,"BDD");
 
-            unlam.registraMateria(pb2);
-            unlam.registraMateria(base);
-            unlam.registraMateria(pb1);
+            unlam.registraMateria(pb2); //REGISTRO PB2
+            unlam.registraMateria(base); //REGISTRO BASE DE DATOS
+            unlam.registraMateria(pb1); //REGISTRO PB1
             
-            Comision comision = new Comision (codigoCurso, turno, pb2, cl, aula);
+            Comision comision = new Comision (codigoCurso, turno, dia, pb2, cl, aula);
 
         	unlam.crearNuevaComision(comision); //REGISTRO COMISION
     	
@@ -884,14 +941,14 @@ public class TestUniversidad {
         	
         	unlam.registrarNota(alumno, comision, primerNota);
         	unlam.registrarNota(alumno, comision, segundaNota);
-        	unlam.aproboLaMateria(alumno, comision);
+        	unlam.aproboLaMateria(alumno, comision); //EL ALUMNO APROBO PB2 PERO NO CURSO PB1 NI BDD.
         	
-        	ArrayList <Materia> materias = unlam.obtenerMateriasFaltantes(alumno);
+        	ArrayList <Materia> materias = unlam.obtenerMateriasFaltantes(alumno); 
         	
         	//------------------------//
           
-        	assertTrue(materias.contains(pb1));
-        	assertFalse(materias.contains(pb2));
+        	assertTrue(materias.contains(pb1));  
+        	assertFalse(materias.contains(pb2)); 
         	assertTrue(materias.contains(base));
       
     	}

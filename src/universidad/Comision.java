@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Comision {
 
-	
+	private Dia dia;
 	private Turno turno;
 	private Integer numeroComision;
 	private Materia materia; 
@@ -14,7 +14,8 @@ public class Comision {
 	private ArrayList<Alumno> alumnos;
 	private ArrayList <RegistroNota> registros;
 	
-	public Comision(Integer numeroComision, Turno turno, Materia materia, CicloLectivo cl, Aula aula) {
+	public Comision(Integer numeroComision, Turno turno, Dia dia, Materia materia, CicloLectivo cl, Aula aula) {
+		this.dia=dia;
 		this.numeroComision=numeroComision;
 		this.turno=turno;
 		this.materia = materia;
@@ -32,6 +33,15 @@ public class Comision {
 
 	public void setTurno(Turno turno) {
 		this.turno = turno;
+	}
+	
+	public Dia getDia() {
+		return dia;
+	}
+
+
+	public void setDia(Dia dia) {
+		this.dia = dia;
 	}
 
 
@@ -118,10 +128,12 @@ public class Comision {
 	}
 
 
-	public Boolean agregarAlumnoALaComision(Alumno alumno) {
+	public Boolean agregarAlumnoALaComision(Alumno alumno, Comision comision) {
 		Alumno al= buscarAlumnoEnLaComision(alumno);
 			if(al==null) {
+				if(alumno.agregarComisionInscripto(comision)==true) {
 				return alumnos.add(alumno);
+				}
 			}
 		
 		return false;
@@ -167,9 +179,12 @@ public class Comision {
         for (RegistroNota rn : registros) {
             if (rn.getAlumno().getDni().equals(notaEvaluada.getAlumno().getDni()) &&
                 rn.getNota().getTipoNota() == notaEvaluada.getNota().getTipoNota()) {
-                return false; // Si se encuentra una coincidencia, retorna false
+                return false; 
             }
         }
-        return true; // Si no se encontraron coincidencias, retorna true (puede agregar la nota)
+        return true; 
     }
+    
+    
+    
 }
